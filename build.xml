@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="GameAnalysis" basedir="." default="compile">
+
+    <property name="main-class" value="com.gardner.gameanalysis.framework.GamePlayer"/>
+
+    <target name="clean" description="Delete all generated files">
+        <delete dir="bin"/>
+    </target>
+
+    <target name="compile" description="Compiles the Task">
+        <mkdir dir="bin"/>
+        <javac includeantruntime="false" srcdir="src" debug="true" destdir="bin"/>
+    </target>
+
+    <target name="run" depends="compile" description="Runs the main class">
+        <java classname="${main-class}">
+            <classpath>
+                <path location="bin"/>
+            </classpath>
+        </java>
+    </target>
+
+</project>
