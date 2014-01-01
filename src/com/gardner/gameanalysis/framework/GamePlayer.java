@@ -3,7 +3,7 @@ package com.gardner.gameanalysis.framework;
 import java.io.Console;
 import java.util.List;
 
-import com.gardner.gameanalysis.tictactoe.TicTacToe;
+import com.gardner.gameanalysis.labyrinth.Labyrinth;
 
 public class GamePlayer {
     private Game game;
@@ -29,7 +29,7 @@ public class GamePlayer {
     }
 
     public static void main(String[] args) {
-        GamePlayer player = new GamePlayer(new TicTacToe());
+        GamePlayer player = new GamePlayer(new Labyrinth(4, 24));
         player.play();
     }
 }
