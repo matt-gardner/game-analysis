@@ -185,6 +185,7 @@ public class Board {
         LinkedList<Point> queue = new LinkedList<Point>();
         queue.add(point);
         while (queue.size() > 0) {
+            System.out.println("Queue size: " + queue.size());
             Point currentPoint = queue.poll();
             int x = currentPoint.getX();
             int y = currentPoint.getY();
@@ -211,9 +212,10 @@ public class Board {
                 }
                 Point newPoint = new Point(newX, newY);
                 if (!points.contains(newPoint)) {
+                    System.out.println("Adding point to queue: " + newPoint);
                     queue.add(newPoint);
                 }
-                points.add(point);
+                points.add(newPoint);
             }
         }
         return points;
