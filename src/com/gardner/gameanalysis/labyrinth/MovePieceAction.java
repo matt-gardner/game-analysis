@@ -28,31 +28,31 @@ public class MovePieceAction extends LabyrinthAction {
         return "Move player " + playerNum + " to point " + point.toString();
     }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + playerNum;
-		result = prime * result + ((point == null) ? 0 : point.hashCode());
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + playerNum;
+        result = prime * result + ((point == null) ? 0 : point.hashCode());
+        return result;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MovePieceAction other = (MovePieceAction) obj;
-		if (playerNum != other.playerNum)
-			return false;
-		if (point == null) {
-			if (other.point != null)
-				return false;
-		} else if (!point.equals(other.point))
-			return false;
-		return true;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        MovePieceAction other = (MovePieceAction) obj;
+        if (playerNum != other.playerNum)
+            return false;
+        if (point == null) {
+            if (other.point != null)
+                return false;
+        } else if (!point.equals(other.point))
+            return false;
+        return true;
+    }
 }

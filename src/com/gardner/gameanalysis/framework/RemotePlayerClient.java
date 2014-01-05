@@ -18,8 +18,8 @@ public abstract class RemotePlayerClient implements Player {
         System.out.println("Attempting to connect to player server at " + host + ":" + port);
         socket = new Socket(host, port);
         System.out.println("Connected: " + socket.isConnected());
-        in = new ObjectInputStream(socket.getInputStream());
         out = new ObjectOutputStream(socket.getOutputStream());
+        in = new ObjectInputStream(socket.getInputStream());
     }
 
     public void listen() {
@@ -31,6 +31,7 @@ public abstract class RemotePlayerClient implements Player {
                 } else {
                     Action action = pickAction(message.getState(), message.getActions());
                     out.writeObject(new PlayerResponse(action));
+                    out.reset();
                 }
             }
         } catch (IOException e) {

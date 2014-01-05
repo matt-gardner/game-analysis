@@ -24,8 +24,8 @@ public class RemotePlayerServer implements Player {
     public void connect() throws IOException {
         System.out.println("Remote player server waiting for a connection on port " + port);
         socket = socketServer.accept();
-        in = new ObjectInputStream(socket.getInputStream());
         out = new ObjectOutputStream(socket.getOutputStream());
+        in = new ObjectInputStream(socket.getInputStream());
         System.out.println("Connected");
     }
 
@@ -33,6 +33,7 @@ public class RemotePlayerServer implements Player {
     public Action pickAction(PlayerVisibleState state, List<Action> actions) {
         try {
             out.writeObject(new PlayerMessage(state, actions));
+            out.reset();
             PlayerResponse response = (PlayerResponse) in.readObject();
             return response.getAction();
         } catch (IOException e) {
@@ -46,6 +47,7 @@ public class RemotePlayerServer implements Player {
     public void notifyState(PlayerVisibleState state) {
         try {
             out.writeObject(new PlayerMessage(state, null));
+            out.reset();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

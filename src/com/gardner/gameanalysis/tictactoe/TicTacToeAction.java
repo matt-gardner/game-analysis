@@ -29,4 +29,22 @@ public class TicTacToeAction implements Action {
     public int getY() {
         return y;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        TicTacToeAction other = (TicTacToeAction) obj;
+        if (playerNum != other.playerNum)
+            return false;
+        if (x != other.x)
+            return false;
+        if (y != other.y)
+            return false;
+        return true;
+    }
 }

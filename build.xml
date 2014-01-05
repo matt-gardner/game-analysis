@@ -26,7 +26,7 @@
                 <path location="bin"/>
             </classpath>
             <arg value="localhost"/>
-            <arg value="8888"/>
+            <arg value="${port}"/>
         </java>
     </target>
 

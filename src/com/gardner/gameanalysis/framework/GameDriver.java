@@ -19,6 +19,7 @@ public class GameDriver {
 
     public void play() {
         GameState state = game.getInitialState();
+        System.out.println(state);
         for (int i = 0; i < players.size(); i++) {
             players.get(i).notifyState(state.getStateVisibleToPlayer(i));
         }
@@ -31,6 +32,7 @@ public class GameDriver {
                 actionsToTake.put(player, a);
             }
             state = state.takeActions(actionsToTake);
+            System.out.println(state);
             for (int i = 0; i < players.size(); i++) {
                 players.get(i).notifyState(state.getStateVisibleToPlayer(i));
             }

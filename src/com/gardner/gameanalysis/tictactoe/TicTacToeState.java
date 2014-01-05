@@ -56,6 +56,8 @@ public class TicTacToeState extends SingleActionState implements PlayerVisibleSt
         if (winner != -1) {
             nextState.gameOver = true;
             nextState.winner = winner;
+        } else if (nextState.computeAvailableActions().size() == 0) {
+            nextState.gameOver = true;
         }
         return nextState;
     }
