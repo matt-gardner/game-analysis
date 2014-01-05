@@ -5,8 +5,10 @@ import java.util.List;
 
 import com.gardner.gameanalysis.framework.Action;
 import com.gardner.gameanalysis.framework.GameState;
+import com.gardner.gameanalysis.framework.PlayerVisibleState;
+import com.gardner.gameanalysis.framework.SingleActionState;
 
-public class TicTacToeState implements GameState {
+public class TicTacToeState extends SingleActionState implements PlayerVisibleState {
 
     private int[][] board;
     private boolean gameOver;
@@ -26,10 +28,12 @@ public class TicTacToeState implements GameState {
     }
 
     @Override
-    public List<Action> getAvailableActions() {
-        if (availableActions != null) {
-            return availableActions;
-        }
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    @Override
+    public List<Action> computeAvailableActions() {
         availableActions = new ArrayList<Action>();
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
@@ -42,10 +46,7 @@ public class TicTacToeState implements GameState {
     }
 
     @Override
-    public GameState takeAction(Action a) {
-        if (!getAvailableActions().contains(a)) {
-            throw new IllegalArgumentException("Action not allowed");
-        }
+    public SingleActionState takeAction(Action a) {
         TicTacToeAction action = (TicTacToeAction) a;
         int nextPlayer = (currentPlayer + 1) % 2;
         TicTacToeState nextState = new TicTacToeState(nextPlayer);
@@ -75,7 +76,7 @@ public class TicTacToeState implements GameState {
     }
 
     @Override
-    public GameState getStateVisibleToPlayer(int playerNum) {
+    public PlayerVisibleState getStateVisibleToPlayer(int playerNum) {
         return this;
     }
 

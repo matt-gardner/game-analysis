@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="GameAnalysis" basedir="." default="compile">
 
-    <property name="main-class" value="com.gardner.gameanalysis.framework.GamePlayer"/>
+    <property name="main-class" value="com.gardner.gameanalysis.framework.GameDriver"/>
 
     <target name="clean" description="Delete all generated files">
         <delete dir="bin"/>
@@ -17,6 +17,16 @@
             <classpath>
                 <path location="bin"/>
             </classpath>
+        </java>
+    </target>
+
+    <target name="play" depends="compile" description="Runs a player class">
+        <java classname="com.gardner.gameanalysis.framework.RemoteCommandLinePlayer">
+            <classpath>
+                <path location="bin"/>
+            </classpath>
+            <arg value="localhost"/>
+            <arg value="8888"/>
         </java>
     </target>
 

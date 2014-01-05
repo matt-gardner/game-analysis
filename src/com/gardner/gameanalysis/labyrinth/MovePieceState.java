@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.gardner.gameanalysis.framework.Action;
-import com.gardner.gameanalysis.framework.GameState;
+import com.gardner.gameanalysis.framework.PlayerVisibleState;
 
 public class MovePieceState extends LabyrinthState {
     public MovePieceState(int numPlayers, int numCards) {
@@ -27,7 +27,7 @@ public class MovePieceState extends LabyrinthState {
     }
 
     @Override
-    public GameState getStateVisibleToPlayer(int playerNum) {
+    public PlayerVisibleState getStateVisibleToPlayer(int playerNum) {
         // TODO(matt): Decide if this is really how I want to do this.  In particular, the purpose
         // of the GameState interface is to facilitate game analysis.  When you're actually playing
         // the game, you don't really need the functions of GameState, so why force it on the state
