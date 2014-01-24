@@ -30,4 +30,8 @@
         </java>
     </target>
 
+    <target name="jar" description="JARs the Task" depends="compile">
+        <jar destfile="gameanalysis.jar" basedir="bin"/>
+    </target>
+
 </project>
